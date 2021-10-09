@@ -47,11 +47,17 @@ void AudioProcessor::process()
 {
 	std::unique_lock<audio_spin_mutex> lock(*spin, std::try_to_lock);
 
-	if (lock.owns_lock()) {
+	if (lock.owns_lock()) 
+	{
 		for (int i = 0; i < sharedResources.size(); ++i)
 		{
 			std::cout << "Processing data..." << std::endl;
 			int sample = sharedResources[i]; // fake data using
 		}
+	}
+	else
+	{
+		// use a fallback strategy
+
 	}
 }
